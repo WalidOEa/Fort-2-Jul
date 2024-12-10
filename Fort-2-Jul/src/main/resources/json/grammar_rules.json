@@ -1,0 +1,6346 @@
+{
+    "terminal_symbols": [
+        "\"end\"",
+        "\"include\"",
+        "\"subroutine\"",
+        "\"program\"",
+        "\"function\"",
+        "\"entry\"",
+        "\"result\"",
+        "\"blockdata\"",
+        "\"dimension\"",
+        "\"equivalence\"",
+        "\"common\"",
+        "\"integer\"",
+        "\"real\"",
+        "\"doubleprecision\"",
+        "\"complex\"",
+        "\"logical\"",
+        "\"character\"",
+        "\"implicit\"",
+        "\"parameter\"",
+        "\"external\"",
+        "\"intrinsic\"",
+        "\"save\"",
+        "\"data\"",
+        "\"assign\"",
+        "\"to\"",
+        "\"goto\"",
+        "\"if\"",
+        "\"then\"",
+        "\"elseif\"",
+        "\"else\"",
+        "\"endif\"",
+        "\"do\"",
+        "\"continue\"",
+        "\"stop\"",
+        "\"pause\"",
+        "\"write\"",
+        "\"read\"",
+        "\"print\"",
+        "\"open\"",
+        "\"close\"",
+        "\"inquire\"",
+        "\"backspace\"",
+        "\"endfile\"",
+        "\"rewind\"",
+        "\"format\"",
+        "\"call\"",
+        "\"return\"",
+        "\"private\"",
+        "\"sequence\"",
+        "\"type\"",
+        "\"endtype\"",
+        "\"pointer\"",
+        "\"allocatable\"",
+        "\"intent\"",
+        "\"optional\"",
+        "\"target\"",
+        "\"public\"",
+        "\"in\"",
+        "\"out\"",
+        "\"inout\"",
+        "\"namelist\"",
+        "\"allocate\"",
+        "\"nullify\"",
+        "\"deallocate\"",
+        "\"where\"",
+        "\"elsewhere\"",
+        "\"endwhere\"",
+        "\"selectcase\"",
+        "\"select\"",
+        "\"case\"",
+        "\"endselect\"",
+        "\"default\"",
+        "\"enddo\"",
+        "\"cycle\"",
+        "\"exit\"",
+        "\"module\"",
+        "\"endmodule\"",
+        "\"use\"",
+        "\"only\"",
+        "\"interface\"",
+        "\"endinterface\"",
+        "\"procedure\"",
+        "\"operator\"",
+        "\"assignment\"",
+        "\"contains\"",
+        "\"double\"",
+        "\"precision\"",
+        "\"none\"",
+        "\"while\"",
+        "\"go\"",
+        "\"file\"",
+        "\"endprogram\"",
+        "\"block\"",
+        "\"endblockdata\"",
+        "\"endblock\"",
+        "\"recursive\"",
+        "\"endfunction\"",
+        "\"endsubroutine\"",
+        "\"(\"",
+        "\")\"",
+        "\",\"",
+        "\"*\"",
+        "\":\"",
+        "\"/\"",
+        "\"-\"",
+        "\"=\"",
+        "\"$\"",
+        "\"**\"",
+        "\"+\"",
+        "\"::\"",
+        "\"(/\"",
+        "\"/)\"",
+        "\"%\"",
+        "\"=>\"",
+        "\"_\"",
+        "\".\"",
+        "\"==\"",
+        "\"/=\"",
+        "\"<\"",
+        "\"<=\"",
+        "\">\"",
+        "\">=\""
+    ],
+    "rules": {
+        "Ident": [
+            {
+                "production": [
+                    "id"
+                ]
+            }
+        ],
+        "EOS": [
+            {
+                "production": [
+                    "CommentOrNewline",
+                    "CommentOrNewline*"
+                ]
+            }
+        ],
+        "CommentOrNewline": [
+            {
+                "production": [
+                    "comment"
+                ]
+            },
+            {
+                "production": [
+                    "newline"
+                ]
+            }
+        ],
+        "program": [
+            {
+                "production": [
+                    "IN_6",
+                    "CommentOrNewline*",
+                    "ExecutableProgram",
+                    "CommentOrNewline*",
+                    "EX_6"
+                ]
+            }
+        ],
+        "ExecutableProgram": [
+            {
+                "production": [
+                    "ProgramUnit+"
+                ]
+            }
+        ],
+        "ProgramUnit": [
+            {
+                "production": [
+                    "MainProgram"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "SubroutineSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "BlockDataSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "Module"
+                ]
+            }
+        ],
+        "MainProgram": [
+            {
+                "production": [
+                    "ProgramStmt?",
+                    "MainRange"
+                ]
+            }
+        ],
+        "MainRange": [
+            {
+                "production": [
+                    "Body?",
+                    "EndProgramStmt"
+                ]
+            },
+            {
+                "production": [
+                    "BodyPlusInternals",
+                    "EndProgramStmt"
+                ]
+            }
+        ],
+        "EndProgramStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endprogram\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"program\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "Body": [
+            {
+                "production": [
+                    "BodyConstruct+"
+                ]
+            }
+        ],
+        "BodyConstruct": [
+            {
+                "production": [
+                    "SpecificationPartConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "ExecutableConstruct"
+                ]
+            }
+        ],
+        "SpecificationPartConstruct": [
+            {
+                "production": [
+                    "ImplicitStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ParameterStmt"
+                ]
+            },
+            {
+                "production": [
+                    "FormatStmt"
+                ]
+            },
+            {
+                "production": [
+                    "EntryStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DeclarationConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "IncludeStmt"
+                ]
+            },
+            {
+                "production": [
+                    "UseStmt"
+                ]
+            }
+        ],
+        "IncludeStmt": [
+            {
+                "production": [
+                    "\"include\"",
+                    "Scon",
+                    "EOS"
+                ]
+            }
+        ],
+        "DeclarationConstruct": [
+            {
+                "production": [
+                    "TypeDeclarationStmt"
+                ]
+            },
+            {
+                "production": [
+                    "SpecificationStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DerivedTypeDef"
+                ]
+            },
+            {
+                "production": [
+                    "InterfaceBlock"
+                ]
+            }
+        ],
+        "FunctionSubprogram": [
+            {
+                "production": [
+                    "LblDef",
+                    "FunctionPrefix",
+                    "FunctionName",
+                    "FunctionRange"
+                ]
+            }
+        ],
+        "FunctionRange": [
+            {
+                "production": [
+                    "FunctionParList",
+                    "EOS",
+                    "Body?",
+                    "EndFunctionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionParList",
+                    "\"result\"",
+                    "\"(\"",
+                    "Name",
+                    "\")\"",
+                    "EOS",
+                    "BodyPlusInternals",
+                    "EndFunctionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionParList",
+                    "\"result\"",
+                    "\"(\"",
+                    "Name",
+                    "\")\"",
+                    "EOS",
+                    "Body",
+                    "EndFunctionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionParList",
+                    "\"result\"",
+                    "\"(\"",
+                    "Name",
+                    "\")\"",
+                    "EOS",
+                    "EndFunctionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionParList",
+                    "EOS",
+                    "BodyPlusInternals",
+                    "EndFunctionStmt"
+                ]
+            }
+        ],
+        "EndFunctionStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endfunction\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"function\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "SubroutineSubprogram": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"subroutine\"",
+                    "SubroutineName",
+                    "SubroutineRange"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"recursive\"",
+                    "\"subroutine\"",
+                    "SubroutineName",
+                    "SubroutineRange"
+                ]
+            }
+        ],
+        "SubroutineRange": [
+            {
+                "production": [
+                    "SubroutineParList",
+                    "EOS",
+                    "Body?",
+                    "EndSubroutineStmt"
+                ]
+            },
+            {
+                "production": [
+                    "SubroutineParList",
+                    "EOS",
+                    "BodyPlusInternals",
+                    "EndSubroutineStmt"
+                ]
+            }
+        ],
+        "EndSubroutineStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endsubroutine\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"subroutine\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "BlockDataSubprogram": [
+            {
+                "production": [
+                    "BlockDataStmt",
+                    "BlockDataBody",
+                    "EndBlockDataStmt"
+                ]
+            },
+            {
+                "production": [
+                    "BlockDataStmt",
+                    "EndBlockDataStmt"
+                ]
+            }
+        ],
+        "EndBlockDataStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endblockdata\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"blockdata\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endblock\"",
+                    "\"data\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"block\"",
+                    "\"data\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "BlockDataBody": [
+            {
+                "production": [
+                    "BlockDataBodyConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "BlockDataBody",
+                    "BlockDataBodyConstruct"
+                ]
+            }
+        ],
+        "BlockDataBodyConstruct": [
+            {
+                "production": [
+                    "SpecificationPartConstruct"
+                ]
+            }
+        ],
+        "SpecificationStmt": [
+            {
+                "production": [
+                    "CommonStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DataStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DimensionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "EquivalenceStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ExternalStmt"
+                ]
+            },
+            {
+                "production": [
+                    "IntrinsicStmt"
+                ]
+            },
+            {
+                "production": [
+                    "SaveStmt"
+                ]
+            },
+            {
+                "production": [
+                    "AccessStmt"
+                ]
+            },
+            {
+                "production": [
+                    "AllocatableStmt"
+                ]
+            },
+            {
+                "production": [
+                    "IntentStmt"
+                ]
+            },
+            {
+                "production": [
+                    "NamelistStmt"
+                ]
+            },
+            {
+                "production": [
+                    "OptionalStmt"
+                ]
+            },
+            {
+                "production": [
+                    "PointerStmt"
+                ]
+            },
+            {
+                "production": [
+                    "TargetStmt"
+                ]
+            }
+        ],
+        "ExecutionPartConstruct": [
+            {
+                "production": [
+                    "ExecutableConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "FormatStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DataStmt"
+                ]
+            },
+            {
+                "production": [
+                    "EntryStmt"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "DoubleDoStmt"
+                ]
+            }
+        ],
+        "ExecutableConstruct": [
+            {
+                "production": [
+                    "ActionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DoConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "IfConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "CaseConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "WhereConstruct"
+                ]
+            }
+        ],
+        "ActionStmt": [
+            {
+                "production": [
+                    "ArithmeticIfStmt"
+                ]
+            },
+            {
+                "production": [
+                    "AssignmentStmt"
+                ]
+            },
+            {
+                "production": [
+                    "AssignStmt"
+                ]
+            },
+            {
+                "production": [
+                    "BackspaceStmt"
+                ]
+            },
+            {
+                "production": [
+                    "CallStmt"
+                ]
+            },
+            {
+                "production": [
+                    "CloseStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ContinueStmt"
+                ]
+            },
+            {
+                "production": [
+                    "EndfileStmt"
+                ]
+            },
+            {
+                "production": [
+                    "GotoStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ComputedGotoStmt"
+                ]
+            },
+            {
+                "production": [
+                    "AssignedGotoStmt"
+                ]
+            },
+            {
+                "production": [
+                    "IfStmt"
+                ]
+            },
+            {
+                "production": [
+                    "InquireStmt"
+                ]
+            },
+            {
+                "production": [
+                    "OpenStmt"
+                ]
+            },
+            {
+                "production": [
+                    "PauseStmt"
+                ]
+            },
+            {
+                "production": [
+                    "PrintStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ReadStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ReturnStmt"
+                ]
+            },
+            {
+                "production": [
+                    "RewindStmt"
+                ]
+            },
+            {
+                "production": [
+                    "StmtFunctionStmt"
+                ]
+            },
+            {
+                "production": [
+                    "StopStmt"
+                ]
+            },
+            {
+                "production": [
+                    "WriteStmt"
+                ]
+            },
+            {
+                "production": [
+                    "AllocateStmt"
+                ]
+            },
+            {
+                "production": [
+                    "CycleStmt"
+                ]
+            },
+            {
+                "production": [
+                    "DeallocateStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ExitStmt"
+                ]
+            },
+            {
+                "production": [
+                    "NullifyStmt"
+                ]
+            },
+            {
+                "production": [
+                    "PointerAssignmentStmt"
+                ]
+            },
+            {
+                "production": [
+                    "WhereStmt"
+                ]
+            }
+        ],
+        "ProgramStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"program\"",
+                    "ProgramName",
+                    "EOS"
+                ]
+            }
+        ],
+        "FunctionPrefix": [
+            {
+                "production": [
+                    "\"function\""
+                ]
+            },
+            {
+                "production": [
+                    "TypeSpec",
+                    "\"function\""
+                ]
+            },
+            {
+                "production": [
+                    "\"recursive\"",
+                    "\"function\""
+                ]
+            },
+            {
+                "production": [
+                    "\"recursive\"",
+                    "TypeSpec",
+                    "\"function\""
+                ]
+            },
+            {
+                "production": [
+                    "TypeSpec",
+                    "\"recursive\"",
+                    "\"function\""
+                ]
+            }
+        ],
+        "FunctionParList": [
+            {
+                "production": [
+                    "\"(\"",
+                    "FunctionPars",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\u03b5"
+                ]
+            }
+        ],
+        "FunctionPars": [
+            {
+                "production": [
+                    "{FunctionPar \",\"}*"
+                ]
+            }
+        ],
+        "FunctionPar": [
+            {
+                "production": [
+                    "DummyArgName"
+                ]
+            }
+        ],
+        "SubroutineParList": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SubroutinePars",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\u03b5"
+                ]
+            }
+        ],
+        "SubroutinePars": [
+            {
+                "production": [
+                    "{SubroutinePar \",\"}*"
+                ]
+            }
+        ],
+        "SubroutinePar": [
+            {
+                "production": [
+                    "DummyArgName"
+                ]
+            },
+            {
+                "production": [
+                    "\"*\""
+                ]
+            }
+        ],
+        "EntryStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"entry\"",
+                    "EntryName",
+                    "SubroutineParList",
+                    "\"result\"",
+                    "\"(\"",
+                    "Name",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "BlockDataStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"blockdata\"",
+                    "BlockDataName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"block\"",
+                    "\"data\"",
+                    "BlockDataName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "DimensionStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"dimension\"",
+                    "ArrayDeclaratorList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"dimension\"",
+                    "\"::\"",
+                    "ArrayDeclaratorList",
+                    "EOS"
+                ]
+            }
+        ],
+        "ArrayDeclaratorList": [
+            {
+                "production": [
+                    "ArrayDeclarator+"
+                ]
+            }
+        ],
+        "ArrayDeclarator": [
+            {
+                "production": [
+                    "VariableName",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\""
+                ]
+            }
+        ],
+        "ArraySpec": [
+            {
+                "production": [
+                    "ExplicitShapeSpecList"
+                ]
+            },
+            {
+                "production": [
+                    "AssumedSizeSpec"
+                ]
+            },
+            {
+                "production": [
+                    "AssumedShapeSpecList"
+                ]
+            },
+            {
+                "production": [
+                    "DeferredShapeSpecList"
+                ]
+            }
+        ],
+        "ExplicitShapeSpecList": [
+            {
+                "production": [
+                    "ExplicitShapeSpec+"
+                ]
+            }
+        ],
+        "ExplicitShapeSpec": [
+            {
+                "production": [
+                    "LowerBound",
+                    "\":\"",
+                    "UpperBound"
+                ]
+            },
+            {
+                "production": [
+                    "UpperBound"
+                ]
+            }
+        ],
+        "LowerBound": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            }
+        ],
+        "UpperBound": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            }
+        ],
+        "AssumedSizeSpec": [
+            {
+                "production": [
+                    "\"*\""
+                ]
+            },
+            {
+                "production": [
+                    "LowerBound",
+                    "\":\"",
+                    "\"*\""
+                ]
+            },
+            {
+                "production": [
+                    "ExplicitShapeSpecList",
+                    "\",\"",
+                    "\"*\""
+                ]
+            },
+            {
+                "production": [
+                    "ExplicitShapeSpecList",
+                    "\",\"",
+                    "LowerBound",
+                    "\":\"",
+                    "\"*\""
+                ]
+            }
+        ],
+        "EquivalenceStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"equivalence\"",
+                    "EquivalenceSetList",
+                    "EOS"
+                ]
+            }
+        ],
+        "EquivalenceSetList": [
+            {
+                "production": [
+                    "EquivalenceSet+"
+                ]
+            }
+        ],
+        "EquivalenceSet": [
+            {
+                "production": [
+                    "\"(\"",
+                    "EquivalenceObject",
+                    "\",\"",
+                    "EquivalenceObjectList",
+                    "\")\""
+                ]
+            }
+        ],
+        "EquivalenceObjectList": [
+            {
+                "production": [
+                    "EquivalenceObject+"
+                ]
+            }
+        ],
+        "EquivalenceObject": [
+            {
+                "production": [
+                    "Variable"
+                ]
+            }
+        ],
+        "CommonStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"common\"",
+                    "Comlist",
+                    "EOS"
+                ]
+            }
+        ],
+        "Comlist": [
+            {
+                "production": [
+                    "Comblock?",
+                    "CommonBlockObject"
+                ]
+            },
+            {
+                "production": [
+                    "Comlist",
+                    "\",\"",
+                    "Comblock?",
+                    "CommonBlockObject"
+                ]
+            },
+            {
+                "production": [
+                    "Comlist",
+                    "Comblock",
+                    "CommonBlockObject"
+                ]
+            }
+        ],
+        "Comblock": [
+            {
+                "production": [
+                    "\"/\"",
+                    "SPOFF",
+                    "\"/\"",
+                    "SPON"
+                ]
+            },
+            {
+                "production": [
+                    "\"/\"",
+                    "CommonBlockName",
+                    "\"/\""
+                ]
+            }
+        ],
+        "CommonBlockObject": [
+            {
+                "production": [
+                    "VariableName"
+                ]
+            },
+            {
+                "production": [
+                    "ArrayDeclarator"
+                ]
+            }
+        ],
+        "TypeDeclarationStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "TypeSpec",
+                    "EntityDeclList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "TypeSpec",
+                    "AttrSpecSeq?",
+                    "\"::\"",
+                    "EntityDeclList",
+                    "EOS"
+                ]
+            }
+        ],
+        "TypeSpec": [
+            {
+                "production": [
+                    "\"integer\""
+                ]
+            },
+            {
+                "production": [
+                    "\"real\""
+                ]
+            },
+            {
+                "production": [
+                    "\"doubleprecision\""
+                ]
+            },
+            {
+                "production": [
+                    "\"complex\""
+                ]
+            },
+            {
+                "production": [
+                    "\"logical\""
+                ]
+            },
+            {
+                "production": [
+                    "\"character\""
+                ]
+            },
+            {
+                "production": [
+                    "\"character\"",
+                    "LengthSelector"
+                ]
+            },
+            {
+                "production": [
+                    "\"integer\"",
+                    "KindSelector"
+                ]
+            },
+            {
+                "production": [
+                    "\"real\"",
+                    "KindSelector"
+                ]
+            },
+            {
+                "production": [
+                    "\"double\"",
+                    "\"precision\""
+                ]
+            },
+            {
+                "production": [
+                    "\"complex\"",
+                    "KindSelector"
+                ]
+            },
+            {
+                "production": [
+                    "\"character\"",
+                    "CharSelector"
+                ]
+            },
+            {
+                "production": [
+                    "\"logical\"",
+                    "KindSelector"
+                ]
+            },
+            {
+                "production": [
+                    "\"type\"",
+                    "\"(\"",
+                    "TypeName",
+                    "\")\""
+                ]
+            }
+        ],
+        "EntityDeclList": [
+            {
+                "production": [
+                    "EntityDecl+"
+                ]
+            }
+        ],
+        "EntityDecl": [
+            {
+                "production": [
+                    "ObjectName"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"*\"",
+                    "CharLength"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\"",
+                    "\"*\"",
+                    "CharLength"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\"",
+                    "\"=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"*\"",
+                    "CharLength",
+                    "\"=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"*\"",
+                    "CharLength",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\"",
+                    "\"=\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "LengthSelector": [
+            {
+                "production": [
+                    "\"*\"",
+                    "CharLength"
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "TypeParamValue",
+                    "\")\""
+                ]
+            }
+        ],
+        "ImplicitStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"implicit\"",
+                    "ImplicitSpecList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"implicit\"",
+                    "\"none\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "ImplicitSpecList": [
+            {
+                "production": [
+                    "ImplicitSpec+"
+                ]
+            }
+        ],
+        "ImplicitSpec": [
+            {
+                "production": [
+                    "TypeSpec",
+                    "ImplicitRanges"
+                ]
+            },
+            {
+                "production": [
+                    "TypeSpec",
+                    "\"(\"",
+                    "ImplicitRanges",
+                    "\")\""
+                ]
+            }
+        ],
+        "ImplicitRanges": [
+            {
+                "production": [
+                    "{ImplicitRange \",\"}*"
+                ]
+            }
+        ],
+        "ImplicitRange": [
+            {
+                "production": [
+                    "Ident",
+                    "\"-\"",
+                    "Ident"
+                ]
+            }
+        ],
+        "CharLength": [
+            {
+                "production": [
+                    "\"(\"",
+                    "TypeParamValue",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "Constant"
+                ]
+            }
+        ],
+        "TypeParamValue": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "\"*\""
+                ]
+            }
+        ],
+        "ParameterStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"parameter\"",
+                    "\"(\"",
+                    "NamedConstantDefList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "NamedConstantDefList": [
+            {
+                "production": [
+                    "NamedConstantDef+"
+                ]
+            }
+        ],
+        "NamedConstantDef": [
+            {
+                "production": [
+                    "NamedConstant",
+                    "\"=\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "NamedConstant": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "NamedConstantUse": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ExternalStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"external\"",
+                    "ExternalNameList",
+                    "EOS"
+                ]
+            }
+        ],
+        "ExternalNameList": [
+            {
+                "production": [
+                    "ExternalName+"
+                ]
+            }
+        ],
+        "IntrinsicStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"intrinsic\"",
+                    "IntrinsicList",
+                    "EOS"
+                ]
+            }
+        ],
+        "IntrinsicList": [
+            {
+                "production": [
+                    "IntrinsicProcedureName+"
+                ]
+            }
+        ],
+        "SaveStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"save\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"save\"",
+                    "SavedEntityList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"save\"",
+                    "\"::\"",
+                    "SavedEntityList",
+                    "EOS"
+                ]
+            }
+        ],
+        "SavedEntityList": [
+            {
+                "production": [
+                    "SavedEntity+"
+                ]
+            }
+        ],
+        "SavedEntity": [
+            {
+                "production": [
+                    "VariableName"
+                ]
+            },
+            {
+                "production": [
+                    "SavedCommonBlock"
+                ]
+            }
+        ],
+        "SavedCommonBlock": [
+            {
+                "production": [
+                    "\"/\"",
+                    "CommonBlockName",
+                    "\"/\""
+                ]
+            }
+        ],
+        "DataStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"data\"",
+                    "Datalist",
+                    "EOS"
+                ]
+            }
+        ],
+        "Datalist": [
+            {
+                "production": [
+                    "DataStmtSet"
+                ]
+            },
+            {
+                "production": [
+                    "Datalist?",
+                    "\",\"?",
+                    "DataStmtSet"
+                ]
+            }
+        ],
+        "DataStmtSet": [
+            {
+                "production": [
+                    "DataStmtObjectList",
+                    "\"/\"",
+                    "DataStmtValueList",
+                    "\"/\""
+                ]
+            }
+        ],
+        "DataStmtObjectList": [
+            {
+                "production": [
+                    "DataStmtObject+"
+                ]
+            }
+        ],
+        "DataStmtObject": [
+            {
+                "production": [
+                    "Variable"
+                ]
+            },
+            {
+                "production": [
+                    "DataImpliedDo"
+                ]
+            }
+        ],
+        "DataStmtValueList": [
+            {
+                "production": [
+                    "DataStmtValue+"
+                ]
+            }
+        ],
+        "DataStmtValue": [
+            {
+                "production": [
+                    "Constant"
+                ]
+            },
+            {
+                "production": [
+                    "Constant",
+                    "\"*\"",
+                    "Constant"
+                ]
+            },
+            {
+                "production": [
+                    "NamedConstantUse",
+                    "\"*\"",
+                    "Constant"
+                ]
+            }
+        ],
+        "DataImpliedDo": [
+            {
+                "production": [
+                    "\"(\"",
+                    "DataIDoObjectList",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "DataIDoObjectList",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            }
+        ],
+        "DataIDoObjectList": [
+            {
+                "production": [
+                    "DataIDoObject+"
+                ]
+            }
+        ],
+        "DataIDoObject": [
+            {
+                "production": [
+                    "ArrayElement"
+                ]
+            },
+            {
+                "production": [
+                    "DataImpliedDo"
+                ]
+            },
+            {
+                "production": [
+                    "StructureComponent"
+                ]
+            }
+        ],
+        "AssignmentStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "SFExprListRef?",
+                    "SubstringRange?",
+                    "\"=\"",
+                    "Expr",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "SFExprListRef?",
+                    "\"%\"",
+                    "NameDataRef",
+                    "\"=\"",
+                    "Expr",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "\"(\"",
+                    "SFDummyArgNameList",
+                    "\")\"",
+                    "\"%\"",
+                    "NameDataRef",
+                    "\"=\"",
+                    "Expr",
+                    "EOS"
+                ]
+            }
+        ],
+        "SFExprListRef": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SFExprList",
+                    "CommaSectionSubscript*",
+                    "\")\""
+                ]
+            }
+        ],
+        "SFExprList": [
+            {
+                "production": [
+                    "Expr",
+                    "\":\"?",
+                    "Expr?"
+                ]
+            },
+            {
+                "production": [
+                    "\":\"",
+                    "Expr?"
+                ]
+            },
+            {
+                "production": [
+                    "Expr?",
+                    "\":\"",
+                    "Expr",
+                    "\":\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Expr?",
+                    "\"::\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "CommaSectionSubscript": [
+            {
+                "production": [
+                    "\",\"",
+                    "SectionSubscript"
+                ]
+            }
+        ],
+        "AssignStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"assign\"",
+                    "LblRef",
+                    "\"to\"",
+                    "VariableName",
+                    "EOS"
+                ]
+            }
+        ],
+        "GotoStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "GoToKw",
+                    "LblRef",
+                    "EOS"
+                ]
+            }
+        ],
+        "GoToKw": [
+            {
+                "production": [
+                    "\"goto\""
+                ]
+            },
+            {
+                "production": [
+                    "\"go\"",
+                    "\"to\""
+                ]
+            }
+        ],
+        "ComputedGotoStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "GoToKw",
+                    "\"(\"",
+                    "LblRefList",
+                    "\")\"",
+                    "\",\"?",
+                    "Expr",
+                    "EOS"
+                ]
+            }
+        ],
+        "LblRefList": [
+            {
+                "production": [
+                    "LblRef+"
+                ]
+            }
+        ],
+        "LblRef": [
+            {
+                "production": [
+                    "Label"
+                ]
+            }
+        ],
+        "AssignedGotoStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "GoToKw",
+                    "VariableName",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "GoToKw",
+                    "VariableName",
+                    "\"(\"",
+                    "LblRefList",
+                    "\")\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "GoToKw",
+                    "VariableComma",
+                    "\"(\"",
+                    "LblRefList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "VariableComma": [
+            {
+                "production": [
+                    "VariableName",
+                    "\",\""
+                ]
+            }
+        ],
+        "ArithmeticIfStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"if\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "LblRef",
+                    "\",\"",
+                    "LblRef",
+                    "\",\"",
+                    "LblRef",
+                    "EOS"
+                ]
+            }
+        ],
+        "IfStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"if\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "ActionStmt"
+                ]
+            }
+        ],
+        "IfConstruct": [
+            {
+                "production": [
+                    "IfThenStmt",
+                    "ConditionalBody",
+                    "ElseIfConstruct*",
+                    "ElseConstruct?",
+                    "EndIfStmt"
+                ]
+            }
+        ],
+        "ElseIfConstruct": [
+            {
+                "production": [
+                    "ElseIfStmt",
+                    "ConditionalBody"
+                ]
+            }
+        ],
+        "ElseConstruct": [
+            {
+                "production": [
+                    "ElseStmt",
+                    "ConditionalBody"
+                ]
+            }
+        ],
+        "ConditionalBody": [
+            {
+                "production": [
+                    "ExecutionPartConstruct*"
+                ]
+            }
+        ],
+        "IfThenStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"if\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "\"then\"",
+                    "EOS",
+                    "IN_2"
+                ]
+            }
+        ],
+        "ElseIfStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "EX_2",
+                    "\"elseif\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "\"then\"",
+                    "EOS",
+                    "IN_2"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "EX_2",
+                    "\"else\"",
+                    "\"if\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "\"then\"",
+                    "EOS",
+                    "IN_2"
+                ]
+            }
+        ],
+        "ElseStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "EX_2",
+                    "\"else\"",
+                    "EOS",
+                    "IN_2"
+                ]
+            }
+        ],
+        "EndIfStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "EX_2",
+                    "\"endif\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "EX_2",
+                    "\"end\"",
+                    "\"if\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "DoConstruct": [
+            {
+                "production": [
+                    "LabelDoStmt"
+                ]
+            },
+            {
+                "production": [
+                    "BlockDoConstruct"
+                ]
+            }
+        ],
+        "LabelDoStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"do\"",
+                    "DoLblRef",
+                    "CommaLoopControl",
+                    "EOS",
+                    "IN_2",
+                    "ExecutionPartConstruct*",
+                    "EX_2",
+                    "DoLblDef",
+                    "DoLabelStmt"
+                ]
+            }
+        ],
+        "CommaLoopControl": [
+            {
+                "production": [
+                    "\",\"?",
+                    "LoopControl"
+                ]
+            }
+        ],
+        "DoLblRef": [
+            {
+                "production": [
+                    "Icon"
+                ]
+            }
+        ],
+        "DoLblDef": [
+            {
+                "production": [
+                    "TAB_2",
+                    "Icon",
+                    "TAB_9"
+                ]
+            }
+        ],
+        "DoubleDoStmt": [
+            {
+                "production": [
+                    "\"do\"",
+                    "LblRef",
+                    "CommaLoopControl",
+                    "EOS"
+                ]
+            }
+        ],
+        "DoLabelStmt": [
+            {
+                "production": [
+                    "ActionStmt"
+                ]
+            }
+        ],
+        "LoopControl": [
+            {
+                "production": [
+                    "VariableName",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "CommaExpr?"
+                ]
+            },
+            {
+                "production": [
+                    "\"while\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\""
+                ]
+            }
+        ],
+        "ContinueStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"continue\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "StopStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"stop\"",
+                    "IconOrScon?",
+                    "EOS"
+                ]
+            }
+        ],
+        "IconOrScon": [
+            {
+                "production": [
+                    "Icon"
+                ]
+            },
+            {
+                "production": [
+                    "Scon"
+                ]
+            }
+        ],
+        "PauseStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"pause\"",
+                    "IconOrScon?",
+                    "EOS"
+                ]
+            }
+        ],
+        "WriteStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"write\"",
+                    "\"(\"",
+                    "IoControlSpecList",
+                    "\")\"",
+                    "OutputItemList?",
+                    "EOS"
+                ]
+            }
+        ],
+        "ReadStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"read\"",
+                    "RdCtlSpec",
+                    "InputItemList?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"read\"",
+                    "RdFmtId",
+                    "CommaInputItemList?",
+                    "EOS"
+                ]
+            }
+        ],
+        "CommaInputItemList": [
+            {
+                "production": [
+                    "\",\"",
+                    "InputItemList"
+                ]
+            }
+        ],
+        "RdCtlSpec": [
+            {
+                "production": [
+                    "RdUnitId"
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "RdIoCtlSpecList",
+                    "\")\""
+                ]
+            }
+        ],
+        "RdUnitId": [
+            {
+                "production": [
+                    "\"(\"",
+                    "UFExpr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "\"*\"",
+                    "\")\""
+                ]
+            }
+        ],
+        "RdIoCtlSpecList": [
+            {
+                "production": [
+                    "UnitIdentifier",
+                    "\",\"",
+                    "IoControlSpec"
+                ]
+            },
+            {
+                "production": [
+                    "UnitIdentifier",
+                    "\",\"",
+                    "FormatIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "IoControlSpec"
+                ]
+            },
+            {
+                "production": [
+                    "RdIoCtlSpecList",
+                    "\",\"",
+                    "IoControlSpec"
+                ]
+            }
+        ],
+        "RdFmtId": [
+            {
+                "production": [
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"*\""
+                ]
+            },
+            {
+                "production": [
+                    "COperand"
+                ]
+            },
+            {
+                "production": [
+                    "COperand",
+                    "ConcatOp",
+                    "CPrimary"
+                ]
+            },
+            {
+                "production": [
+                    "RdFmtIdExpr",
+                    "ConcatOp",
+                    "CPrimary"
+                ]
+            }
+        ],
+        "RdFmtIdExpr": [
+            {
+                "production": [
+                    "\"(\"",
+                    "UFExpr",
+                    "\")\""
+                ]
+            }
+        ],
+        "PrintStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"print\"",
+                    "FormatIdentifier",
+                    "\",\"",
+                    "OutputItemList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"print\"",
+                    "FormatIdentifier",
+                    "EOS"
+                ]
+            }
+        ],
+        "IoControlSpecList": [
+            {
+                "production": [
+                    "UnitIdentifier",
+                    "\"$\"",
+                    "\",\""
+                ]
+            },
+            {
+                "production": [
+                    "UnitIdentifier",
+                    "\",\"",
+                    "FormatIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "UnitIdentifier",
+                    "\",\"",
+                    "IoControlSpec"
+                ]
+            },
+            {
+                "production": [
+                    "IoControlSpec"
+                ]
+            },
+            {
+                "production": [
+                    "IoControlSpecList",
+                    "\",\"",
+                    "IoControlSpec"
+                ]
+            }
+        ],
+        "IoControlSpec": [
+            {
+                "production": [
+                    "\"fmt=\"",
+                    "FormatIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "\"unit=\"",
+                    "UnitIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "\"rec=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "\"end=\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"err=\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"iostat=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"nml=\"",
+                    "NamelistGroupName"
+                ]
+            },
+            {
+                "production": [
+                    "\"advance=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"size=\"",
+                    "Variable"
+                ]
+            },
+            {
+                "production": [
+                    "\"eor=\"",
+                    "LblRef"
+                ]
+            }
+        ],
+        "InputItemList": [
+            {
+                "production": [
+                    "InputItem+"
+                ]
+            }
+        ],
+        "InputItem": [
+            {
+                "production": [
+                    "NameDataRef"
+                ]
+            },
+            {
+                "production": [
+                    "InputImpliedDo"
+                ]
+            }
+        ],
+        "OutputItemList": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "OutputItemList1"
+                ]
+            }
+        ],
+        "OutputItemList1": [
+            {
+                "production": [
+                    "Expr",
+                    "\",\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Expr",
+                    "\",\"",
+                    "OutputImpliedDo"
+                ]
+            },
+            {
+                "production": [
+                    "OutputImpliedDo"
+                ]
+            },
+            {
+                "production": [
+                    "OutputItemList1",
+                    "\",\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "OutputItemList1",
+                    "\",\"",
+                    "OutputImpliedDo"
+                ]
+            }
+        ],
+        "InputImpliedDo": [
+            {
+                "production": [
+                    "\"(\"",
+                    "InputItemList",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "CommaExpr?",
+                    "\")\""
+                ]
+            }
+        ],
+        "CommaExpr": [
+            {
+                "production": [
+                    "\",\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "OutputImpliedDo": [
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "CommaExpr?",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "OutputItemList1",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "CommaExpr?",
+                    "\")\""
+                ]
+            }
+        ],
+        "OpenStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"open\"",
+                    "\"(\"",
+                    "ConnectSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "ConnectSpecList": [
+            {
+                "production": [
+                    "UnitIdentifierComma?",
+                    "{ConnectSpec \",\"}*"
+                ]
+            }
+        ],
+        "UnitIdentifierComma": [
+            {
+                "production": [
+                    "UnitIdentifier",
+                    "\",\""
+                ]
+            }
+        ],
+        "ConnectSpec": [
+            {
+                "production": [
+                    "\"unit=\"",
+                    "UnitIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "\"err=\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"file=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"status=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"access=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"form=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"recl=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "\"blank=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"iostat=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"position=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"action=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"delim=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"pad=\"",
+                    "CExpr"
+                ]
+            }
+        ],
+        "CloseStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"close\"",
+                    "\"(\"",
+                    "CloseSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "CloseSpecList": [
+            {
+                "production": [
+                    "UnitIdentifierComma?",
+                    "{CloseSpec \",\"}*"
+                ]
+            }
+        ],
+        "CloseSpec": [
+            {
+                "production": [
+                    "\"unit=\"",
+                    "UnitIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "\"err=\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"status=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"iostat=\"",
+                    "ScalarVariable"
+                ]
+            }
+        ],
+        "InquireStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"inquire\"",
+                    "\"(\"",
+                    "InquireSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"inquire\"",
+                    "\"(\"",
+                    "\"iolength=\"",
+                    "ScalarVariable",
+                    "\")\"",
+                    "OutputItemList",
+                    "EOS"
+                ]
+            }
+        ],
+        "InquireSpecList": [
+            {
+                "production": [
+                    "UnitIdentifier?",
+                    "{InquireSpec \",\"}*"
+                ]
+            }
+        ],
+        "InquireSpec": [
+            {
+                "production": [
+                    "\"unit=\"",
+                    "UnitIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "\"file=\"",
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"err=\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"iostat=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"exist=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"opened=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"number=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"named=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"name=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"access=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"sequential=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"direct=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"form=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"formatted=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"unformatted=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"recl=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "\"nextrec=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"blank=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"position=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"action=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"read=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"write=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"readwrite=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"delim=\"",
+                    "ScalarVariable"
+                ]
+            },
+            {
+                "production": [
+                    "\"pad=\"",
+                    "ScalarVariable"
+                ]
+            }
+        ],
+        "BackspaceStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"backspace\"",
+                    "UnitIdentifier",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"backspace\"",
+                    "\"(\"",
+                    "PositionSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "EndfileStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"endfile\"",
+                    "UnitIdentifier",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endfile\"",
+                    "\"(\"",
+                    "PositionSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"file\"",
+                    "UnitIdentifier",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"file\"",
+                    "\"(\"",
+                    "PositionSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "RewindStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"rewind\"",
+                    "UnitIdentifier",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"rewind\"",
+                    "\"(\"",
+                    "PositionSpecList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "PositionSpecList": [
+            {
+                "production": [
+                    "UnitIdentifierComma?",
+                    "PositionSpec+"
+                ]
+            }
+        ],
+        "PositionSpec": [
+            {
+                "production": [
+                    "\"unit=\"",
+                    "UnitIdentifier"
+                ]
+            },
+            {
+                "production": [
+                    "\"err=\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"iostat=\"",
+                    "ScalarVariable"
+                ]
+            }
+        ],
+        "UnitIdentifier": [
+            {
+                "production": [
+                    "UFExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"*\""
+                ]
+            }
+        ],
+        "FormatIdentifier": [
+            {
+                "production": [
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "CExpr"
+                ]
+            },
+            {
+                "production": [
+                    "\"*\""
+                ]
+            }
+        ],
+        "FormatStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"format\"",
+                    "\"(\"",
+                    "FmtSpec?",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "FmtSpec": [
+            {
+                "production": [
+                    "Formatedit"
+                ]
+            },
+            {
+                "production": [
+                    "Formatsep"
+                ]
+            },
+            {
+                "production": [
+                    "Formatsep",
+                    "Formatedit"
+                ]
+            },
+            {
+                "production": [
+                    "FmtSpec",
+                    "Formatsep"
+                ]
+            },
+            {
+                "production": [
+                    "FmtSpec",
+                    "Formatsep",
+                    "Formatedit"
+                ]
+            },
+            {
+                "production": [
+                    "FmtSpec",
+                    "\",\"",
+                    "Formatedit"
+                ]
+            },
+            {
+                "production": [
+                    "FmtSpec",
+                    "\",\"",
+                    "Formatsep"
+                ]
+            },
+            {
+                "production": [
+                    "FmtSpec",
+                    "\",\"",
+                    "Formatsep",
+                    "Formatedit"
+                ]
+            }
+        ],
+        "Formatedit": [
+            {
+                "production": [
+                    "EditElement"
+                ]
+            },
+            {
+                "production": [
+                    "Icon",
+                    "EditElement"
+                ]
+            },
+            {
+                "production": [
+                    "Xcon"
+                ]
+            },
+            {
+                "production": [
+                    "Pcon"
+                ]
+            },
+            {
+                "production": [
+                    "Pcon",
+                    "EditElement"
+                ]
+            },
+            {
+                "production": [
+                    "Pcon",
+                    "Icon",
+                    "EditElement"
+                ]
+            }
+        ],
+        "EditElement": [
+            {
+                "production": [
+                    "Fcon"
+                ]
+            },
+            {
+                "production": [
+                    "MislexedFcon"
+                ]
+            },
+            {
+                "production": [
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "Hcon"
+                ]
+            },
+            {
+                "production": [
+                    "Ident"
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "FmtSpec",
+                    "\")\""
+                ]
+            }
+        ],
+        "MislexedFcon": [
+            {
+                "production": [
+                    "RDcon",
+                    "SPOFF",
+                    "RDcon",
+                    "SPON"
+                ]
+            },
+            {
+                "production": [
+                    "Ident",
+                    "SPOFF",
+                    "RDcon",
+                    "SPON"
+                ]
+            }
+        ],
+        "Formatsep": [
+            {
+                "production": [
+                    "\"/\""
+                ]
+            },
+            {
+                "production": [
+                    "\":\""
+                ]
+            }
+        ],
+        "StmtFunctionStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "StmtFunctionRange"
+                ]
+            }
+        ],
+        "StmtFunctionRange": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SFDummyArgNameList?",
+                    "\")\"",
+                    "\"=\"",
+                    "Expr",
+                    "EOS"
+                ]
+            }
+        ],
+        "SFDummyArgNameList": [
+            {
+                "production": [
+                    "SFDummyArgName+"
+                ]
+            }
+        ],
+        "CallStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"call\"",
+                    "SubroutineNameUse",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"call\"",
+                    "SubroutineNameUse",
+                    "\"(\"",
+                    "SubroutineArgList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "SubroutineArgList": [
+            {
+                "production": [
+                    "{SubroutineArg \",\"}*"
+                ]
+            }
+        ],
+        "SubroutineArg": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Hcon"
+                ]
+            },
+            {
+                "production": [
+                    "\"*\"",
+                    "LblRef"
+                ]
+            },
+            {
+                "production": [
+                    "Name",
+                    "\"=\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Name",
+                    "\"=\"",
+                    "Hcon"
+                ]
+            },
+            {
+                "production": [
+                    "Name",
+                    "\"=\"",
+                    "\"*\"",
+                    "LblRef"
+                ]
+            }
+        ],
+        "ReturnStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"return\"",
+                    "Expr?",
+                    "EOS"
+                ]
+            }
+        ],
+        "FunctionReference": [
+            {
+                "production": [
+                    "Name",
+                    "\"(\"",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "Name",
+                    "\"(\"",
+                    "FunctionArgList",
+                    "\")\""
+                ]
+            }
+        ],
+        "NameDataRef": [
+            {
+                "production": [
+                    "Name",
+                    "ComplexDataRefTail*"
+                ]
+            }
+        ],
+        "ComplexDataRefTail": [
+            {
+                "production": [
+                    "SectionSubscriptRef"
+                ]
+            },
+            {
+                "production": [
+                    "\"%\"",
+                    "Name"
+                ]
+            }
+        ],
+        "SectionSubscriptRef": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SectionSubscriptList",
+                    "\")\""
+                ]
+            }
+        ],
+        "SectionSubscriptList": [
+            {
+                "production": [
+                    "SectionSubscript+"
+                ]
+            }
+        ],
+        "SectionSubscript": [
+            {
+                "production": [
+                    "Expr",
+                    "SubscriptTripletTail?"
+                ]
+            },
+            {
+                "production": [
+                    "SubscriptTripletTail"
+                ]
+            }
+        ],
+        "Expr": [
+            {
+                "production": [
+                    "Level5Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Expr",
+                    "DefinedBinaryOp",
+                    "Level5Expr"
+                ]
+            }
+        ],
+        "Primary": [
+            {
+                "production": [
+                    "UnsignedArithmeticConstant"
+                ]
+            },
+            {
+                "production": [
+                    "NameDataRef"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionReference"
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "LogicalConstant"
+                ]
+            },
+            {
+                "production": [
+                    "ArrayConstructor"
+                ]
+            }
+        ],
+        "Level1Expr": [
+            {
+                "production": [
+                    "Primary"
+                ]
+            },
+            {
+                "production": [
+                    "DefinedUnaryOp",
+                    "Primary"
+                ]
+            }
+        ],
+        "MultOperand": [
+            {
+                "production": [
+                    "Level1Expr",
+                    "PowerUpMultOperand?"
+                ]
+            }
+        ],
+        "PowerUpMultOperand": [
+            {
+                "production": [
+                    "PowerOp",
+                    "MultOperand"
+                ]
+            }
+        ],
+        "AddOperand": [
+            {
+                "production": [
+                    "MultOperand",
+                    "MultOpMultOperand*"
+                ]
+            }
+        ],
+        "MultOpMultOperand": [
+            {
+                "production": [
+                    "MultOp",
+                    "MultOperand"
+                ]
+            }
+        ],
+        "Level2Expr": [
+            {
+                "production": [
+                    "Sign?",
+                    "AddOperand",
+                    "AddOpAddOperand*"
+                ]
+            }
+        ],
+        "AddOpAddOperand": [
+            {
+                "production": [
+                    "AddOp",
+                    "AddOperand"
+                ]
+            }
+        ],
+        "PowerOp": [
+            {
+                "production": [
+                    "\"**\""
+                ]
+            }
+        ],
+        "MultOp": [
+            {
+                "production": [
+                    "\"*\""
+                ]
+            },
+            {
+                "production": [
+                    "\"/\""
+                ]
+            }
+        ],
+        "AddOp": [
+            {
+                "production": [
+                    "\"+\""
+                ]
+            },
+            {
+                "production": [
+                    "\"-\""
+                ]
+            }
+        ],
+        "Sign": [
+            {
+                "production": [
+                    "\"+\""
+                ]
+            },
+            {
+                "production": [
+                    "\"-\""
+                ]
+            }
+        ],
+        "UFExpr": [
+            {
+                "production": [
+                    "UFTerm"
+                ]
+            },
+            {
+                "production": [
+                    "Sign",
+                    "UFTerm"
+                ]
+            },
+            {
+                "production": [
+                    "UFExpr",
+                    "AddOp",
+                    "UFTerm"
+                ]
+            }
+        ],
+        "UFTerm": [
+            {
+                "production": [
+                    "UFFactor"
+                ]
+            },
+            {
+                "production": [
+                    "UFTerm",
+                    "MultOp",
+                    "UFFactor"
+                ]
+            },
+            {
+                "production": [
+                    "UFTerm",
+                    "ConcatOp",
+                    "UFPrimary"
+                ]
+            }
+        ],
+        "UFFactor": [
+            {
+                "production": [
+                    "UFPrimary"
+                ]
+            },
+            {
+                "production": [
+                    "UFPrimary",
+                    "PowerOp",
+                    "UFFactor"
+                ]
+            }
+        ],
+        "UFPrimary": [
+            {
+                "production": [
+                    "Icon"
+                ]
+            },
+            {
+                "production": [
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "NameDataRef"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionReference"
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "UFExpr",
+                    "\")\""
+                ]
+            }
+        ],
+        "CExpr": [
+            {
+                "production": [
+                    "CPrimary",
+                    "CPrimaryConcatOp*"
+                ]
+            }
+        ],
+        "CPrimaryConcatOp": [
+            {
+                "production": [
+                    "CPrimary",
+                    "ConcatOp"
+                ]
+            }
+        ],
+        "CPrimary": [
+            {
+                "production": [
+                    "COperand"
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "CExpr",
+                    "\")\""
+                ]
+            }
+        ],
+        "COperand": [
+            {
+                "production": [
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "NameDataRef"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionReference"
+                ]
+            }
+        ],
+        "Level3Expr": [
+            {
+                "production": [
+                    "Level2Expr",
+                    "ConcatOpLevel2Expr*"
+                ]
+            }
+        ],
+        "ConcatOpLevel2Expr": [
+            {
+                "production": [
+                    "ConcatOp",
+                    "Level2Expr"
+                ]
+            }
+        ],
+        "ConcatOp": [
+            {
+                "production": [
+                    "\"/\"",
+                    "SPOFF",
+                    "\"/\"",
+                    "SPON"
+                ]
+            }
+        ],
+        "AndOperand": [
+            {
+                "production": [
+                    "NotOp?",
+                    "Level4Expr"
+                ]
+            }
+        ],
+        "OrOperand": [
+            {
+                "production": [
+                    "AndOperand",
+                    "AndOpAndOperand*"
+                ]
+            }
+        ],
+        "AndOpAndOperand": [
+            {
+                "production": [
+                    "AndOp",
+                    "AndOperand"
+                ]
+            }
+        ],
+        "EquivOperand": [
+            {
+                "production": [
+                    "OrOperand",
+                    "OrUpOrOperand*"
+                ]
+            }
+        ],
+        "OrUpOrOperand": [
+            {
+                "production": [
+                    "OrOp",
+                    "OrOperand"
+                ]
+            }
+        ],
+        "Level5Expr": [
+            {
+                "production": [
+                    "EquivOperand",
+                    "EquivOpEquivOperand*"
+                ]
+            }
+        ],
+        "EquivOpEquivOperand": [
+            {
+                "production": [
+                    "EquivOp",
+                    "EquivOperand"
+                ]
+            }
+        ],
+        "NotOp": [
+            {
+                "production": [
+                    "SP",
+                    "\".not.\"",
+                    "SP"
+                ]
+            }
+        ],
+        "AndOp": [
+            {
+                "production": [
+                    "SP",
+                    "\".and.\"",
+                    "SP"
+                ]
+            }
+        ],
+        "OrOp": [
+            {
+                "production": [
+                    "SP",
+                    "\".or.\"",
+                    "SP"
+                ]
+            }
+        ],
+        "EquivOp": [
+            {
+                "production": [
+                    "SP",
+                    "\".eqv.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".neqv.\"",
+                    "SP"
+                ]
+            }
+        ],
+        "Level4Expr": [
+            {
+                "production": [
+                    "Level3Expr",
+                    "RelOpLevel3Expr*"
+                ]
+            }
+        ],
+        "RelOpLevel3Expr": [
+            {
+                "production": [
+                    "RelOp",
+                    "Level3Expr"
+                ]
+            }
+        ],
+        "RelOp": [
+            {
+                "production": [
+                    "SP",
+                    "\".eq.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".ne.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".lt.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".le.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".gt.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".ge.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "\"==\""
+                ]
+            },
+            {
+                "production": [
+                    "\"/=\""
+                ]
+            },
+            {
+                "production": [
+                    "\"<\""
+                ]
+            },
+            {
+                "production": [
+                    "\"<=\""
+                ]
+            },
+            {
+                "production": [
+                    "\">\""
+                ]
+            },
+            {
+                "production": [
+                    "\">=\""
+                ]
+            }
+        ],
+        "ArrayElement": [
+            {
+                "production": [
+                    "VariableName",
+                    "\"(\"",
+                    "SectionSubscriptList",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "StructureComponent",
+                    "\"(\"",
+                    "SectionSubscriptList",
+                    "\")\""
+                ]
+            }
+        ],
+        "SubstringRange": [
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr?",
+                    "SubscriptTripletTail",
+                    "\")\""
+                ]
+            }
+        ],
+        "SubscriptTripletTail": [
+            {
+                "production": [
+                    "\":\"",
+                    "Expr?"
+                ]
+            },
+            {
+                "production": [
+                    "\":\"",
+                    "Expr",
+                    "\":\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "\"::\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "Name": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "Constant": [
+            {
+                "production": [
+                    "NamedConstantUse"
+                ]
+            },
+            {
+                "production": [
+                    "PlusMinus?",
+                    "UnsignedArithmeticConstant"
+                ]
+            },
+            {
+                "production": [
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "Hcon"
+                ]
+            },
+            {
+                "production": [
+                    "LogicalConstant"
+                ]
+            },
+            {
+                "production": [
+                    "Icon",
+                    "\"_\"",
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "NamedConstantUse",
+                    "\"_\"",
+                    "Scon"
+                ]
+            },
+            {
+                "production": [
+                    "StructureConstructor"
+                ]
+            },
+            {
+                "production": [
+                    "BozLiteralConstant"
+                ]
+            }
+        ],
+        "PlusMinus": [
+            {
+                "production": [
+                    "\"+\""
+                ]
+            },
+            {
+                "production": [
+                    "\"-\""
+                ]
+            }
+        ],
+        "UnsignedArithmeticConstant": [
+            {
+                "production": [
+                    "Icon"
+                ]
+            },
+            {
+                "production": [
+                    "RDcon"
+                ]
+            },
+            {
+                "production": [
+                    "ComplexConst"
+                ]
+            },
+            {
+                "production": [
+                    "Icon",
+                    "\"_\"",
+                    "KindParam"
+                ]
+            },
+            {
+                "production": [
+                    "RDcon",
+                    "\"_\"",
+                    "KindParam"
+                ]
+            }
+        ],
+        "ComplexConst": [
+            {
+                "production": [
+                    "\"(\"",
+                    "ComplexComponent",
+                    "\",\"",
+                    "ComplexComponent",
+                    "\")\""
+                ]
+            }
+        ],
+        "ComplexComponent": [
+            {
+                "production": [
+                    "Sign?",
+                    "Icon"
+                ]
+            },
+            {
+                "production": [
+                    "RDcon"
+                ]
+            },
+            {
+                "production": [
+                    "Name"
+                ]
+            }
+        ],
+        "LogicalConstant": [
+            {
+                "production": [
+                    "SP",
+                    "\".true.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".false.\"",
+                    "SP"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".true.\"",
+                    "SP",
+                    "\"_\"",
+                    "KindParam"
+                ]
+            },
+            {
+                "production": [
+                    "SP",
+                    "\".false.\"",
+                    "SP",
+                    "\"_\"",
+                    "KindParam",
+                    "\".\""
+                ]
+            }
+        ],
+        "Label": [
+            {
+                "production": [
+                    "Icon"
+                ]
+            }
+        ],
+        "BlockDataName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "CommonBlockName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "DummyArgName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "EntryName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ExternalName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "FunctionName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ImpliedDoVariable": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "IntrinsicProcedureName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ObjectName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ProgramName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "SFDummyArgName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "SFVarName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "SubroutineName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "SubroutineNameUse": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "VariableName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ScalarVariable": [
+            {
+                "production": [
+                    "VariableName"
+                ]
+            },
+            {
+                "production": [
+                    "ArrayElement"
+                ]
+            }
+        ],
+        "Variable": [
+            {
+                "production": [
+                    "VariableName",
+                    "SubscriptListRef?",
+                    "SubstringRange?"
+                ]
+            }
+        ],
+        "SubscriptListRef": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SubscriptList",
+                    "\")\""
+                ]
+            }
+        ],
+        "SubscriptList": [
+            {
+                "production": [
+                    "Subscript+"
+                ]
+            }
+        ],
+        "Subscript": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            }
+        ],
+        "LblDef": [
+            {
+                "production": [
+                    "\u03b5"
+                ]
+            },
+            {
+                "production": [
+                    "TAB_2",
+                    "Label",
+                    "TAB_7"
+                ]
+            }
+        ],
+        "BodyPlusInternals": [
+            {
+                "production": [
+                    "Body",
+                    "ContainsStmt",
+                    "InternalSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "ContainsStmt",
+                    "InternalSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "BodyPlusInternals",
+                    "InternalSubprogram"
+                ]
+            }
+        ],
+        "InternalSubprogram": [
+            {
+                "production": [
+                    "FunctionSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "SubroutineSubprogram"
+                ]
+            }
+        ],
+        "ModuleSubprogramPartConstruct": [
+            {
+                "production": [
+                    "ContainsStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ModuleSubprogram"
+                ]
+            }
+        ],
+        "ModuleSubprogram": [
+            {
+                "production": [
+                    "FunctionSubprogram"
+                ]
+            },
+            {
+                "production": [
+                    "SubroutineSubprogram"
+                ]
+            }
+        ],
+        "DefinedOperator": [
+            {
+                "production": [
+                    "Dop"
+                ]
+            },
+            {
+                "production": [
+                    "PowerOp"
+                ]
+            },
+            {
+                "production": [
+                    "MultOp"
+                ]
+            },
+            {
+                "production": [
+                    "AddOp"
+                ]
+            },
+            {
+                "production": [
+                    "RelOp"
+                ]
+            },
+            {
+                "production": [
+                    "ConcatOp"
+                ]
+            },
+            {
+                "production": [
+                    "NotOp"
+                ]
+            },
+            {
+                "production": [
+                    "AndOp"
+                ]
+            },
+            {
+                "production": [
+                    "OrOp"
+                ]
+            },
+            {
+                "production": [
+                    "EquivOp"
+                ]
+            }
+        ],
+        "KindParam": [
+            {
+                "production": [
+                    "Icon"
+                ]
+            },
+            {
+                "production": [
+                    "NamedConstantUse"
+                ]
+            }
+        ],
+        "BozLiteralConstant": [
+            {
+                "production": [
+                    "Bcon"
+                ]
+            },
+            {
+                "production": [
+                    "Ocon"
+                ]
+            },
+            {
+                "production": [
+                    "Zcon"
+                ]
+            }
+        ],
+        "DerivedTypeDef": [
+            {
+                "production": [
+                    "DerivedTypeStmt",
+                    "DerivedTypeBody",
+                    "EndTypeStmt"
+                ]
+            }
+        ],
+        "DerivedTypeBody": [
+            {
+                "production": [
+                    "DerivedTypeBodyConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "DerivedTypeBody",
+                    "DerivedTypeBodyConstruct"
+                ]
+            }
+        ],
+        "DerivedTypeBodyConstruct": [
+            {
+                "production": [
+                    "PrivateSequenceStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ComponentDefStmt"
+                ]
+            }
+        ],
+        "PrivateSequenceStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"private\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"sequence\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "DerivedTypeStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"type\"",
+                    "TypeName",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"type\"",
+                    "\"::\"",
+                    "TypeName",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"type\"",
+                    "\",\"",
+                    "AccessSpec",
+                    "\"::\"",
+                    "TypeName",
+                    "EOS"
+                ]
+            }
+        ],
+        "EndTypeStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"endtype\"",
+                    "TypeName",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"endtype\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"type\"",
+                    "TypeName",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"type\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "ComponentDefStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "TypeSpec",
+                    "\",\"",
+                    "ComponentAttrSpecList",
+                    "\"::\"",
+                    "ComponentDeclList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "TypeSpec",
+                    "\"::\"",
+                    "ComponentDeclList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "TypeSpec",
+                    "ComponentDeclList",
+                    "EOS"
+                ]
+            }
+        ],
+        "ComponentAttrSpecList": [
+            {
+                "production": [
+                    "ComponentAttrSpec+"
+                ]
+            }
+        ],
+        "ComponentAttrSpec": [
+            {
+                "production": [
+                    "\"pointer\""
+                ]
+            },
+            {
+                "production": [
+                    "\"dimension\"",
+                    "\"(\"",
+                    "ComponentArraySpec",
+                    "\")\""
+                ]
+            }
+        ],
+        "ComponentArraySpec": [
+            {
+                "production": [
+                    "ExplicitShapeSpecList"
+                ]
+            },
+            {
+                "production": [
+                    "DeferredShapeSpecList"
+                ]
+            }
+        ],
+        "ComponentDeclList": [
+            {
+                "production": [
+                    "ComponentDecl+"
+                ]
+            }
+        ],
+        "ComponentDecl": [
+            {
+                "production": [
+                    "ComponentName",
+                    "\"(\"",
+                    "ComponentArraySpec",
+                    "\")\"",
+                    "\"*\"",
+                    "CharLength"
+                ]
+            },
+            {
+                "production": [
+                    "ComponentName",
+                    "\"(\"",
+                    "ComponentArraySpec",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "ComponentName",
+                    "\"*\"",
+                    "CharLength"
+                ]
+            },
+            {
+                "production": [
+                    "ComponentName"
+                ]
+            }
+        ],
+        "StructureConstructor": [
+            {
+                "production": [
+                    "TypeName",
+                    "\"(\"",
+                    "ExprList",
+                    "\")\""
+                ]
+            }
+        ],
+        "ExprList": [
+            {
+                "production": [
+                    "Expr+"
+                ]
+            }
+        ],
+        "ArrayConstructor": [
+            {
+                "production": [
+                    "\"(/\"",
+                    "AcValueList",
+                    "\"/)\""
+                ]
+            }
+        ],
+        "AcValueList": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "AcValueList1"
+                ]
+            }
+        ],
+        "AcValueList1": [
+            {
+                "production": [
+                    "Expr",
+                    "\",\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Expr",
+                    "\",\"",
+                    "AcImpliedDo"
+                ]
+            },
+            {
+                "production": [
+                    "AcImpliedDo"
+                ]
+            },
+            {
+                "production": [
+                    "AcValueList1",
+                    "\",\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "AcValueList1",
+                    "\",\"",
+                    "AcImpliedDo"
+                ]
+            }
+        ],
+        "AcImpliedDo": [
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "AcImpliedDo",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "AcImpliedDo",
+                    "\",\"",
+                    "ImpliedDoVariable",
+                    "\"=\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            }
+        ],
+        "AttrSpecSeq": [
+            {
+                "production": [
+                    "\",\"",
+                    "AttrSpec"
+                ]
+            },
+            {
+                "production": [
+                    "AttrSpecSeq",
+                    "\",\"",
+                    "AttrSpec"
+                ]
+            }
+        ],
+        "AttrSpec": [
+            {
+                "production": [
+                    "\"parameter\""
+                ]
+            },
+            {
+                "production": [
+                    "AccessSpec"
+                ]
+            },
+            {
+                "production": [
+                    "\"allocatable\""
+                ]
+            },
+            {
+                "production": [
+                    "\"dimension\"",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"external\""
+                ]
+            },
+            {
+                "production": [
+                    "\"intent\"",
+                    "\"(\"",
+                    "IntentSpec",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"intrinsic\""
+                ]
+            },
+            {
+                "production": [
+                    "\"optional\""
+                ]
+            },
+            {
+                "production": [
+                    "\"pointer\""
+                ]
+            },
+            {
+                "production": [
+                    "\"save\""
+                ]
+            },
+            {
+                "production": [
+                    "\"target\""
+                ]
+            }
+        ],
+        "KindSelector": [
+            {
+                "production": [
+                    "\"(\"",
+                    "\"kind=\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr",
+                    "\")\""
+                ]
+            }
+        ],
+        "CharSelector": [
+            {
+                "production": [
+                    "\"(\"",
+                    "\"len=\"",
+                    "TypeParamValue",
+                    "\",\"",
+                    "\"kind=\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "\"len=\"",
+                    "TypeParamValue",
+                    "\",\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "\"len=\"",
+                    "TypeParamValue",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "\"kind=\"",
+                    "Expr",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"(\"",
+                    "Expr",
+                    "\")\""
+                ]
+            }
+        ],
+        "AccessSpec": [
+            {
+                "production": [
+                    "\"public\""
+                ]
+            },
+            {
+                "production": [
+                    "\"private\""
+                ]
+            }
+        ],
+        "IntentSpec": [
+            {
+                "production": [
+                    "\"in\""
+                ]
+            },
+            {
+                "production": [
+                    "\"out\""
+                ]
+            },
+            {
+                "production": [
+                    "\"inout\""
+                ]
+            }
+        ],
+        "AssumedShapeSpecList": [
+            {
+                "production": [
+                    "LowerBound",
+                    "\":\""
+                ]
+            },
+            {
+                "production": [
+                    "DeferredShapeSpecList",
+                    "\",\"",
+                    "LowerBound",
+                    "\":\""
+                ]
+            },
+            {
+                "production": [
+                    "AssumedShapeSpecList",
+                    "\",\"",
+                    "AssumedShapeSpec"
+                ]
+            }
+        ],
+        "AssumedShapeSpec": [
+            {
+                "production": [
+                    "LowerBound",
+                    "\":\""
+                ]
+            },
+            {
+                "production": [
+                    "\":\""
+                ]
+            }
+        ],
+        "DeferredShapeSpecList": [
+            {
+                "production": [
+                    "DeferredShapeSpec+"
+                ]
+            }
+        ],
+        "DeferredShapeSpec": [
+            {
+                "production": [
+                    "\":\""
+                ]
+            }
+        ],
+        "IntentStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"intent\"",
+                    "\"(\"",
+                    "IntentSpec",
+                    "\")\"",
+                    "ColonColon?",
+                    "IntentParList",
+                    "EOS"
+                ]
+            }
+        ],
+        "ColonColon": [
+            {
+                "production": [
+                    "\"::\""
+                ]
+            }
+        ],
+        "IntentParList": [
+            {
+                "production": [
+                    "IntentPar+"
+                ]
+            }
+        ],
+        "IntentPar": [
+            {
+                "production": [
+                    "DummyArgName"
+                ]
+            }
+        ],
+        "OptionalStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"optional\"",
+                    "ColonColon?",
+                    "OptionalParList",
+                    "EOS"
+                ]
+            }
+        ],
+        "OptionalParList": [
+            {
+                "production": [
+                    "OptionalPar+"
+                ]
+            }
+        ],
+        "OptionalPar": [
+            {
+                "production": [
+                    "DummyArgName"
+                ]
+            }
+        ],
+        "AccessStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "AccessSpec",
+                    "ColonColon?",
+                    "AccessIdList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "AccessSpec",
+                    "EOS"
+                ]
+            }
+        ],
+        "AccessIdList": [
+            {
+                "production": [
+                    "AccessId+"
+                ]
+            }
+        ],
+        "AccessId": [
+            {
+                "production": [
+                    "GenericName"
+                ]
+            },
+            {
+                "production": [
+                    "GenericSpec"
+                ]
+            }
+        ],
+        "AllocatableStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"allocatable\"",
+                    "ColonColon?",
+                    "ArrayAllocationList",
+                    "EOS"
+                ]
+            }
+        ],
+        "ArrayAllocationList": [
+            {
+                "production": [
+                    "ArrayAllocation+"
+                ]
+            }
+        ],
+        "ArrayAllocation": [
+            {
+                "production": [
+                    "ArrayName"
+                ]
+            },
+            {
+                "production": [
+                    "ArrayName",
+                    "\"(\"",
+                    "DeferredShapeSpecList",
+                    "\")\""
+                ]
+            }
+        ],
+        "PointerStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"pointer\"",
+                    "ColonColon?",
+                    "PointerStmtObjectList",
+                    "EOS"
+                ]
+            }
+        ],
+        "PointerStmtObjectList": [
+            {
+                "production": [
+                    "PointerStmtObject+"
+                ]
+            }
+        ],
+        "PointerStmtObject": [
+            {
+                "production": [
+                    "ObjectName"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"(\"",
+                    "DeferredShapeSpecList",
+                    "\")\""
+                ]
+            }
+        ],
+        "TargetStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"target\"",
+                    "ColonColon?",
+                    "TargetObjectList",
+                    "EOS"
+                ]
+            }
+        ],
+        "TargetObjectList": [
+            {
+                "production": [
+                    "TargetObject+"
+                ]
+            }
+        ],
+        "TargetObject": [
+            {
+                "production": [
+                    "ObjectName"
+                ]
+            },
+            {
+                "production": [
+                    "ObjectName",
+                    "\"(\"",
+                    "ArraySpec",
+                    "\")\""
+                ]
+            }
+        ],
+        "NamelistStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"namelist\"",
+                    "NamelistGroups",
+                    "EOS"
+                ]
+            }
+        ],
+        "NamelistGroups": [
+            {
+                "production": [
+                    "\"/\"",
+                    "NamelistGroupName",
+                    "\"/\"",
+                    "NamelistGroupObject"
+                ]
+            },
+            {
+                "production": [
+                    "NamelistGroups",
+                    "\"/\"",
+                    "NamelistGroupName",
+                    "\"/\"",
+                    "NamelistGroupObject"
+                ]
+            },
+            {
+                "production": [
+                    "NamelistGroups",
+                    "\",\"",
+                    "\"/\"",
+                    "NamelistGroupName",
+                    "\"/\"",
+                    "NamelistGroupObject"
+                ]
+            },
+            {
+                "production": [
+                    "NamelistGroups",
+                    "\",\"",
+                    "NamelistGroupObject"
+                ]
+            }
+        ],
+        "NamelistGroupObject": [
+            {
+                "production": [
+                    "VariableName"
+                ]
+            }
+        ],
+        "StructureComponent": [
+            {
+                "production": [
+                    "VariableName",
+                    "FieldSelector"
+                ]
+            },
+            {
+                "production": [
+                    "StructureComponent",
+                    "FieldSelector"
+                ]
+            }
+        ],
+        "FieldSelector": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SectionSubscriptList",
+                    "\")\"",
+                    "\"%\"",
+                    "Name"
+                ]
+            },
+            {
+                "production": [
+                    "\"%\"",
+                    "Name"
+                ]
+            }
+        ],
+        "AllocateStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"allocate\"",
+                    "\"(\"",
+                    "AllocationList",
+                    "\",\"",
+                    "\"stat=\"",
+                    "Variable",
+                    "\")\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"allocate\"",
+                    "\"(\"",
+                    "AllocationList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "AllocationList": [
+            {
+                "production": [
+                    "Allocation+"
+                ]
+            }
+        ],
+        "Allocation": [
+            {
+                "production": [
+                    "AllocateObject"
+                ]
+            },
+            {
+                "production": [
+                    "AllocateObject",
+                    "AllocatedShape"
+                ]
+            }
+        ],
+        "AllocatedShape": [
+            {
+                "production": [
+                    "\"(\"",
+                    "SectionSubscriptList",
+                    "\")\""
+                ]
+            }
+        ],
+        "AllocateObjectList": [
+            {
+                "production": [
+                    "AllocateObject+"
+                ]
+            }
+        ],
+        "AllocateObject": [
+            {
+                "production": [
+                    "VariableName"
+                ]
+            },
+            {
+                "production": [
+                    "AllocateObject",
+                    "FieldSelector"
+                ]
+            }
+        ],
+        "NullifyStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"nullify\"",
+                    "\"(\"",
+                    "PointerObjectList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "PointerObjectList": [
+            {
+                "production": [
+                    "PointerObject+"
+                ]
+            }
+        ],
+        "PointerObject": [
+            {
+                "production": [
+                    "Name"
+                ]
+            },
+            {
+                "production": [
+                    "PointerField"
+                ]
+            }
+        ],
+        "PointerField": [
+            {
+                "production": [
+                    "Name",
+                    "SFExprListRef?",
+                    "\"%\"",
+                    "Name"
+                ]
+            },
+            {
+                "production": [
+                    "PointerField",
+                    "FieldSelector"
+                ]
+            }
+        ],
+        "DeallocateStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"deallocate\"",
+                    "\"(\"",
+                    "AllocateObjectList",
+                    "\",\"",
+                    "\"stat=\"",
+                    "Variable",
+                    "\")\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"deallocate\"",
+                    "\"(\"",
+                    "AllocateObjectList",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "DefinedUnaryOp": [
+            {
+                "production": [
+                    "Dop"
+                ]
+            }
+        ],
+        "DefinedBinaryOp": [
+            {
+                "production": [
+                    "Dop"
+                ]
+            }
+        ],
+        "PointerAssignmentStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "\"=>\"",
+                    "Target",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "SFExprListRef?",
+                    "\"%\"",
+                    "NameDataRef",
+                    "\"=>\"",
+                    "Target",
+                    "EOS"
+                ]
+            }
+        ],
+        "Target": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            }
+        ],
+        "WhereStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"where\"",
+                    "\"(\"",
+                    "MaskExpr",
+                    "\")\"",
+                    "AssignmentStmt"
+                ]
+            }
+        ],
+        "WhereConstruct": [
+            {
+                "production": [
+                    "Where",
+                    "EndWhereStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ElseWhere",
+                    "EndWhereStmt"
+                ]
+            }
+        ],
+        "Where": [
+            {
+                "production": [
+                    "WhereConstructStmt"
+                ]
+            },
+            {
+                "production": [
+                    "Where",
+                    "AssignmentStmt"
+                ]
+            }
+        ],
+        "ElseWhere": [
+            {
+                "production": [
+                    "Where",
+                    "ElsewhereStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ElseWhere",
+                    "AssignmentStmt"
+                ]
+            }
+        ],
+        "WhereConstructStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"where\"",
+                    "\"(\"",
+                    "MaskExpr",
+                    "\")\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "MaskExpr": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            }
+        ],
+        "ElsewhereStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"elsewhere\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "EndWhereStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"endwhere\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"where\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "CaseConstruct": [
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "\":\"",
+                    "\"selectcase\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "EOS",
+                    "SelectCaseRange"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"selectcase\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "EOS",
+                    "SelectCaseRange"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "Name",
+                    "\":\"",
+                    "\"select\"",
+                    "\"case\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "EOS",
+                    "SelectCaseRange"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"select\"",
+                    "\"case\"",
+                    "\"(\"",
+                    "Expr",
+                    "\")\"",
+                    "EOS",
+                    "SelectCaseRange"
+                ]
+            }
+        ],
+        "SelectCaseRange": [
+            {
+                "production": [
+                    "SelectCaseBody",
+                    "EndSelectStmt"
+                ]
+            },
+            {
+                "production": [
+                    "EndSelectStmt"
+                ]
+            }
+        ],
+        "SelectCaseBody": [
+            {
+                "production": [
+                    "CaseStmt"
+                ]
+            },
+            {
+                "production": [
+                    "SelectCaseBody",
+                    "CaseBodyConstruct"
+                ]
+            }
+        ],
+        "CaseBodyConstruct": [
+            {
+                "production": [
+                    "CaseStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ExecutionPartConstruct"
+                ]
+            }
+        ],
+        "CaseStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"case\"",
+                    "CaseSelector",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"case\"",
+                    "CaseSelector",
+                    "Name",
+                    "EOS"
+                ]
+            }
+        ],
+        "EndSelectStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"endselect\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"select\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "CaseSelector": [
+            {
+                "production": [
+                    "\"(\"",
+                    "CaseValueRangeList",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"default\""
+                ]
+            }
+        ],
+        "CaseValueRangeList": [
+            {
+                "production": [
+                    "CaseValueRange+"
+                ]
+            }
+        ],
+        "CaseValueRange": [
+            {
+                "production": [
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Expr",
+                    "\":\""
+                ]
+            },
+            {
+                "production": [
+                    "\":\"",
+                    "Expr"
+                ]
+            },
+            {
+                "production": [
+                    "Expr",
+                    "\":\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "BlockDoConstruct": [
+            {
+                "production": [
+                    "LblDef",
+                    "NameColon?",
+                    "\"do\"",
+                    "CommaLoopControl?",
+                    "EOS",
+                    "IN_2",
+                    "ExecutionPartConstruct*",
+                    "EX_2",
+                    "EndDoStmt"
+                ]
+            }
+        ],
+        "NameColon": [
+            {
+                "production": [
+                    "Name",
+                    "\":\""
+                ]
+            }
+        ],
+        "EndDoStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"enddo\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"do\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "CycleStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"cycle\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "ExitStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"exit\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            }
+        ],
+        "Module": [
+            {
+                "production": [
+                    "ModuleStmt",
+                    "ModuleBody",
+                    "EndModuleStmt"
+                ]
+            },
+            {
+                "production": [
+                    "ModuleStmt",
+                    "EndModuleStmt"
+                ]
+            }
+        ],
+        "ModuleBody": [
+            {
+                "production": [
+                    "SpecificationPartConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "ModuleSubprogramPartConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "ModuleBody",
+                    "SpecificationPartConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "ModuleBody",
+                    "ModuleSubprogramPartConstruct"
+                ]
+            }
+        ],
+        "ModuleStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"module\"",
+                    "ModuleName",
+                    "EOS"
+                ]
+            }
+        ],
+        "EndModuleStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"endmodule\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"module\"",
+                    "EndName?",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "UseStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"use\"",
+                    "Name",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"use\"",
+                    "Name",
+                    "\",\"",
+                    "\"only\"",
+                    "\":\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"use\"",
+                    "Name",
+                    "\",\"",
+                    "RenameList",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"use\"",
+                    "Name",
+                    "\",\"",
+                    "\"only\"",
+                    "\":\"",
+                    "OnlyList",
+                    "EOS"
+                ]
+            }
+        ],
+        "RenameList": [
+            {
+                "production": [
+                    "Rename+"
+                ]
+            }
+        ],
+        "OnlyList": [
+            {
+                "production": [
+                    "Only+"
+                ]
+            }
+        ],
+        "Rename": [
+            {
+                "production": [
+                    "Ident",
+                    "\"=>\"",
+                    "UseName"
+                ]
+            }
+        ],
+        "Only": [
+            {
+                "production": [
+                    "GenericSpec"
+                ]
+            },
+            {
+                "production": [
+                    "Ident",
+                    "\"=>\"",
+                    "UseName"
+                ]
+            },
+            {
+                "production": [
+                    "UseName"
+                ]
+            }
+        ],
+        "InterfaceBlock": [
+            {
+                "production": [
+                    "InterfaceStmt",
+                    "InterfaceBlockBody",
+                    "EndInterfaceStmt"
+                ]
+            }
+        ],
+        "InterfaceBlockBody": [
+            {
+                "production": [
+                    "InterfaceBodyPartConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "InterfaceBlockBody",
+                    "InterfaceBodyPartConstruct"
+                ]
+            }
+        ],
+        "InterfaceBodyPartConstruct": [
+            {
+                "production": [
+                    "InterfaceBody"
+                ]
+            },
+            {
+                "production": [
+                    "ModuleProcedureStmt"
+                ]
+            }
+        ],
+        "InterfaceStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"interface\"",
+                    "GenericName",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"interface\"",
+                    "GenericSpec",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"interface\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "EndInterfaceStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"endinterface\"",
+                    "EOS"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"end\"",
+                    "\"interface\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "InterfaceBody": [
+            {
+                "production": [
+                    "LblDef",
+                    "FunctionPrefix",
+                    "FunctionName",
+                    "FunctionInterfaceRange"
+                ]
+            },
+            {
+                "production": [
+                    "LblDef",
+                    "\"subroutine\"",
+                    "SubroutineName",
+                    "SubroutineInterfaceRange"
+                ]
+            }
+        ],
+        "FunctionInterfaceRange": [
+            {
+                "production": [
+                    "FunctionParList",
+                    "EOS",
+                    "SubprogramInterfaceBody?",
+                    "EndFunctionStmt"
+                ]
+            }
+        ],
+        "SubroutineInterfaceRange": [
+            {
+                "production": [
+                    "SubroutineParList",
+                    "EOS",
+                    "SubprogramInterfaceBody?",
+                    "EndSubroutineStmt"
+                ]
+            }
+        ],
+        "SubprogramInterfaceBody": [
+            {
+                "production": [
+                    "SpecificationPartConstruct"
+                ]
+            },
+            {
+                "production": [
+                    "SubprogramInterfaceBody",
+                    "SpecificationPartConstruct"
+                ]
+            }
+        ],
+        "ModuleProcedureStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"module\"",
+                    "\"procedure\"",
+                    "ProcedureNameList",
+                    "EOS"
+                ]
+            }
+        ],
+        "ProcedureNameList": [
+            {
+                "production": [
+                    "ProcedureName+"
+                ]
+            }
+        ],
+        "ProcedureName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "GenericSpec": [
+            {
+                "production": [
+                    "\"operator\"",
+                    "\"(\"",
+                    "DefinedOperator",
+                    "\")\""
+                ]
+            },
+            {
+                "production": [
+                    "\"assignment\"",
+                    "\"(\"",
+                    "\"=\"",
+                    "\")\""
+                ]
+            }
+        ],
+        "FunctionArgList": [
+            {
+                "production": [
+                    "FunctionArg"
+                ]
+            },
+            {
+                "production": [
+                    "FunctionArgList",
+                    "\",\"",
+                    "FunctionArg"
+                ]
+            },
+            {
+                "production": [
+                    "SectionSubscriptList",
+                    "\",\"",
+                    "FunctionArg"
+                ]
+            }
+        ],
+        "FunctionArg": [
+            {
+                "production": [
+                    "Name",
+                    "\"=\"",
+                    "Expr"
+                ]
+            }
+        ],
+        "ContainsStmt": [
+            {
+                "production": [
+                    "LblDef",
+                    "\"contains\"",
+                    "EOS"
+                ]
+            }
+        ],
+        "ArrayName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ComponentName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "GenericName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "ModuleName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "NamelistGroupName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "UseName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "TypeName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ],
+        "EndName": [
+            {
+                "production": [
+                    "Ident"
+                ]
+            }
+        ]
+    },
+    "bottom_rules": [
+        "comment",
+        "SP",
+        "SPON",
+        "IN_6",
+        "Fcon",
+        "id",
+        "Hcon",
+        "Icon",
+        "IN_2",
+        "newline",
+        "Ocon",
+        "Pcon",
+        "SPOFF",
+        "RDcon",
+        "TAB_9",
+        "Scon",
+        "TAB_7",
+        "EX_6",
+        "Xcon",
+        "Zcon",
+        "TAB_2",
+        "EX_2",
+        "Dop",
+        "Bcon"
+    ],
+    "keywords": [
+        "\"end\"",
+        "\"include\"",
+        "\"subroutine\"",
+        "\"program\"",
+        "\"function\"",
+        "\"entry\"",
+        "\"result\"",
+        "\"blockdata\"",
+        "\"dimension\"",
+        "\"equivalence\"",
+        "\"common\"",
+        "\"integer\"",
+        "\"real\"",
+        "\"doubleprecision\"",
+        "\"complex\"",
+        "\"logical\"",
+        "\"character\"",
+        "\"implicit\"",
+        "\"parameter\"",
+        "\"external\"",
+        "\"intrinsic\"",
+        "\"save\"",
+        "\"data\"",
+        "\"assign\"",
+        "\"to\"",
+        "\"goto\"",
+        "\"if\"",
+        "\"then\"",
+        "\"elseif\"",
+        "\"else\"",
+        "\"endif\"",
+        "\"do\"",
+        "\"continue\"",
+        "\"stop\"",
+        "\"pause\"",
+        "\"write\"",
+        "\"read\"",
+        "\"print\"",
+        "\"open\"",
+        "\"close\"",
+        "\"inquire\"",
+        "\"backspace\"",
+        "\"endfile\"",
+        "\"rewind\"",
+        "\"format\"",
+        "\"call\"",
+        "\"return\"",
+        "\"private\"",
+        "\"sequence\"",
+        "\"type\"",
+        "\"endtype\"",
+        "\"pointer\"",
+        "\"allocatable\"",
+        "\"intent\"",
+        "\"optional\"",
+        "\"target\"",
+        "\"public\"",
+        "\"in\"",
+        "\"out\"",
+        "\"inout\"",
+        "\"namelist\"",
+        "\"allocate\"",
+        "\"nullify\"",
+        "\"deallocate\"",
+        "\"where\"",
+        "\"elsewhere\"",
+        "\"endwhere\"",
+        "\"selectcase\"",
+        "\"select\"",
+        "\"case\"",
+        "\"endselect\"",
+        "\"default\"",
+        "\"enddo\"",
+        "\"cycle\"",
+        "\"exit\"",
+        "\"module\"",
+        "\"endmodule\"",
+        "\"use\"",
+        "\"only\"",
+        "\"interface\"",
+        "\"endinterface\"",
+        "\"procedure\"",
+        "\"operator\"",
+        "\"assignment\"",
+        "\"contains\"",
+        "\"double\"",
+        "\"precision\"",
+        "\"none\"",
+        "\"while\"",
+        "\"go\"",
+        "\"file\"",
+        "\"endprogram\"",
+        "\"block\"",
+        "\"endblockdata\"",
+        "\"endblock\"",
+        "\"recursive\"",
+        "\"endfunction\"",
+        "\"endsubroutine\"",
+    ]
+}

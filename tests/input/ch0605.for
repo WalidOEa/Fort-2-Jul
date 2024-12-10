@@ -1,0 +1,15 @@
+      PROGRAM CH0605
+      IMPLICIT LOGICAL (A-Z)
+      REAL AS,BS,RS
+      DOUBLE PRECISION AL,BL,RL
+        BS=2.0
+        RS=0.123456789012345
+        BL=2.0D0
+        RL=0.123456789012345D0
+        AS=BS*RS
+        AL=BL*RL
+        WRITE(6,100)AS
+100     FORMAT(1X,'AS= ',E22.15)
+        WRITE(6,200)AL
+200     FORMAT(1X,'AL= ',E22.15)
+      END

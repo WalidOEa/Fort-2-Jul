@@ -1,0 +1,27 @@
+      INTEGER FUNCTION FACT(N)
+      INTEGER N,I
+      FACT=1
+C
+C THERE ARE THREE CASES.
+C 1) N > 1 FACTORIAL EVALUATED
+C 2) N = 0 OR N = 1 FACTORIAL IS 1
+C 3) N < 0 FACTORIAL ILLEGAL
+C
+      IF(N.LT.0)THEN
+        PRINT *,' NEGATIVE VALUE FOR FACTORIAL'
+        PRINT *,' NOT DEFINED'
+        FACT = 0
+      ELSE
+        DO 1 I = 2,N
+          FACT = FACT*I
+1       CONTINUE
+      ENDIF
+      END
+      PROGRAM FRONT
+        INTEGER FACT,I,J
+        DO 1 I=-2,10
+          J=FACT(I)
+          PRINT 100,I,J
+  1     CONTINUE
+  100   FORMAT(1X,I4,' FACTORIAL IS ',I10)
+        END

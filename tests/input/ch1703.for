@@ -1,0 +1,32 @@
+
+      FUNCTION OMEGA(A,B)
+        CHARACTER*10 OMEGA
+        CHARACTER *(*) A,B
+        INTEGER LA,LB
+  
+        LA=LEN(A)
+        LB=LEN(B)
+        IF(LA+LB.LE.10) THEN
+          OMEGA=A//B
+        ELSE
+          OMEGA='TOO LONG'
+        ENDIF
+        END      
+      
+      PROGRAM C1703A
+      CHARACTER*10 STR1,STR2
+      CHARACTER*5  STR3,STR4
+      CHARACTER*10 OMEGA
+         PRINT*,'INPUT STRING 1 (MAX 10 CHARACTERS)'
+         READ(*,'(A)')STR1
+         PRINT*,'INPUT STRING 2 (MAX 10 CHARACTERS)'
+         READ(*,'(A)')STR2
+         PRINT*,'INPUT STRING 3 (MAX 5 CHARACTERS)'
+         READ(*,'(A)')STR3
+         PRINT*,'INPUT STRING 4 (MAX 5 CHARACTERS)'
+         READ(*,'(A)')STR4
+         PRINT*,'CONCATENATION OF STR1 & STR2 IS:'
+         PRINT*,OMEGA(STR1,STR2)
+         PRINT*,'CONCATENATION OF STR3 & STR4 IS:'
+         PRINT*,OMEGA(STR3,STR4)
+      END

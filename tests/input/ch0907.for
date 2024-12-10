@@ -1,0 +1,13 @@
+      PROGRAM CH0907
+      IMPLICIT LOGICAL (A-Z)
+      INTEGER FLUID
+      REAL LITRES
+      REAL PINTS
+        PRINT *, ' PINTS        LITRES'
+        DO 10 FLUID = 1, 10
+          LITRES = FLUID/1.75
+          PINTS = FLUID*1.75
+          PRINT 100, PINTS, FLUID, LITRES
+ 100      FORMAT (' ',F7.3,' ',I3,' ',F7.3)
+ 10     CONTINUE
+      END PROGRAM CH0907

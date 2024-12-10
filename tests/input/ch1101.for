@@ -1,0 +1,15 @@
+      PROGRAM CH1101
+      IMPLICIT LOGICAL (A-Z)
+      INTEGER N
+      PARAMETER (N = 12)
+      INTEGER I,X,Y
+      DIMENSION X(N)
+      DIMENSION Y(N)
+
+        DO 10 I = 1, N
+          READ 100, X(I), Y(I)
+ 100      FORMAT (1X,I2,8X,I3)
+          PRINT 200, X(I), Y(I)
+ 200      FORMAT (1X,I3,2X,I3)
+ 10     CONTINUE
+      END PROGRAM CH1101

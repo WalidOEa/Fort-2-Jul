@@ -1,0 +1,20 @@
+      PROGRAM C1702A
+      IMPLICIT LOGICAL (A-Z)
+      CHARACTER L*80
+      INTEGER I,LINE
+      OPEN(UNIT=1,FILE='C1702A.TXT')
+      LINE=1
+
+1     READ (unit=1,END=10,FMT='(A)') L
+        I=INDEX(L,'GEOLOGY')
+        PRINT*,'READING LINE ',LINE
+        IF(I.NE.0)THEN
+         PRINT*,'STRING "GEOLOGY" FOUND AT POSITION ',I
+        ELSE
+         PRINT*,'STRING "GEOLOGY" NOT FOUND'
+        ENDIF
+        LINE=LINE+1
+        GO TO 1
+10    CONTINUE
+      CLOSE(UNIT=1)
+      END

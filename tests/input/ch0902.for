@@ -1,0 +1,11 @@
+      PROGRAM CH0902
+      IMPLICIT LOGICAL (A-Z)
+      INTEGER BIG
+      INTEGER I
+        BIG=10
+        DO 10 I = 1, 40
+          PRINT 100, I, BIG
+ 100      FORMAT (1X,I3,2X,I12)
+          BIG = BIG*10
+ 10     CONTINUE
+      END PROGRAM CH0902
