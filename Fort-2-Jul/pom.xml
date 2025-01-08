@@ -74,7 +74,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
-            <version>3.2.4</version>  <!-- Make sure to use the latest version available -->
+            <version>3.2.4</version>
             <executions>
               <execution>
                 <phase>package</phase>
@@ -84,7 +84,7 @@
                 <configuration>
                   <transformers>
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                      <mainClass>uk.ac.soton.comp3200.fort2jul.Launcher</mainClass>  <!-- Replace with your actual main class -->
+                      <mainClass>uk.ac.soton.comp3200.fort2jul.Launcher</mainClass>
                     </transformer>
                   </transformers>
                 </configuration>
