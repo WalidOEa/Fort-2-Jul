@@ -36,6 +36,9 @@ For now, the Julia Linter button does not function.
 ## Transpiling (Command Line)
 Run the jar file with the argument specifiying the whole path to the file to transpile. This option is intended for lower end machines.
 
+## Examples
+This repo contains examples of Fortran 77 and their Julia equivalent transpiled using this tool. Explore this directory under _tests_ to further grasp the power of this tool.
+
 ## Unsupported Statements and Constructs
 Note: Below is a list of statements and constructs that are not supported in Fort-2-Jul. This may change in the forseeable future.
 
@@ -60,4 +63,3 @@ However, it is advised to still transpile your program then refactor it despite 
 - Implemented linter
 - Expand the domain of transpiled Fortran 77
 - Transpile Fortran 90
-
