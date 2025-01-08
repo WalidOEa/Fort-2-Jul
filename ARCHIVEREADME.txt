@@ -1,1 +1,0 @@
-This is the readme for the archive. The archive contains the source code for the entire project, designs that can be seen in the dissertation and the tests' input and output.
