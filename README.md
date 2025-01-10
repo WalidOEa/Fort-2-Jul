@@ -60,6 +60,6 @@ Note: Below is a list of statements and constructs that are not supported in For
 However, it is advised to still transpile your program then refactor it despite the prescence of statements or constructs that are not supported as certain constructs and statements such as End that are not supported do not affect program correctness as Julia has no need for the keyword.
 
 ## TODO
-- Implemented linter
+- Implement linter
 - Expand the domain of transpiled Fortran 77
 - Transpile Fortran 90
